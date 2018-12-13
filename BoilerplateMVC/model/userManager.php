@@ -1,13 +1,15 @@
 <?php
 
-function getUsers($db) {
+function getUsers() {
+    $db = getDataBase();
     $query = $db->query("SELECT * FROM Users");
     $result = $query->fetchall(PDO::FETCH_ASSOC);
     return $result;
 }
 
-function getUser($id,$db)
+function getUser($id)
 {
+   $db = getDataBase();
    $query = $db->prepare("SELECT * FROM Users WHERE id= ?");
    $query->execute([$id]);
    $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -16,22 +18,9 @@ function getUser($id,$db)
 }
 
 
-function addUser($user, $db) {
-    $query = $db->prepare("INSERT INTO Users (nom, prenom, age, disponible,commentaire, rue, ville) VALUES(:nom, :prenom, :age, :disponible, :commentaire, :rue, :ville)");
-    $result = $query->execute([
-        "nom" => $user["user_name"],
-        "prenom" => $user["user_firstname"],
-        "age" => $user["user_age"],
-        "disponible" => $user["user_disponible"],
-        "commentaire" => $user["user_commentaire"],
-        "rue" => $user["user_street"],
-        "ville" => $user["user_city"]
-        ]);    
-    return $result;
-}
-
-function updateUser($user,$db){
-    $query = $db->prepare("UPDATE Users SET nom = :nom, prenom = :prenom, age = :age, disponible = :disponible, commentaire = :commentaire, rue = :rue, ville = :ville WHERE id=:id");
+function addUser($user) {
+    $db = getDataBase();
+    $query = $db->prepare("INSERT INTO Users (nom, prenom, age, disponible, commentaire, rue, ville, status, password) VALUES(:nom, :prenom, :age, :disponible, :commentaire, :rue, :ville, :status, :password)");
     $result = $query->execute([
         "nom" => $user["user_name"],
         "prenom" => $user["user_firstname"],
@@ -40,19 +29,40 @@ function updateUser($user,$db){
         "commentaire" => $user["user_commentaire"],
         "rue" => $user["user_street"],
         "ville" => $user["user_city"],
+        "status" => $user["user_status"],
+        "password" => $user["user_password"]
+
+        ]);    
+    return $result;
+}
+
+function updateUser($user){
+    $db = getDataBase();
+    $query = $db->prepare("UPDATE Users SET nom = :nom, prenom = :prenom, age = :age, disponible = :disponible, commentaire = :commentaire, rue = :rue, ville = :ville status = :status password = :password WHERE id=:id");
+    $result = $query->execute([
+        "nom" => $user["user_name"],
+        "prenom" => $user["user_firstname"],
+        "age" => $user["user_age"],
+        "disponible" => $user["user_disponible"],
+        "commentaire" => $user["user_commentaire"],
+        "rue" => $user["user_street"],
+        "ville" => $user["user_city"],
+        "status" => $user["user_status"],
+        "password" => $user["user_password"],
         "id" => $user["id"]        
         ]);    
     return $result;    
 }
 
-function deleteUser($id, $db){
+function deleteUser($id){
+    $db = getDataBase();
     $query = $db->prepare("DELETE FROM Users WHERE id=?");
     $result = $query->execute([$id]);
     return $result;    
 }
 
-function sortUser($form,$db){
-
+function sortUser($form){
+    $db = getDataBase();
     $sql = "SELECT * FROM Users ";
     
     if ($form["ville"])
@@ -113,4 +123,11 @@ function sortUser($form,$db){
     $query->closeCursor();
     return $result;
 }
+
+function verifyUser() {
+    $db = getDataBase();
+    $reponses = $db->query('SELECT * FROM Users');
+    $reponse = $reponses->fetchall();
+}
+
 ?>

@@ -31,6 +31,17 @@
         <label for="userCity">Ville : </label>
         <input type="text" class="form-control" name="user_city" id="userCity" placeholder="ville" required="required">
     </div>
+    <div class="form-group">
+        <label for="status">Status:</label>
+        <select class="form-control" id="status" name="user_status">
+            <option id="status" name="user_admin" value="1">Admin</option>
+            <option id="status" name="user_user" value="0">User</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="userPassword">Password : </label>
+        <input type="password" class="form-control" name="user_password" id="userPassword" placeholder="password" required="required">
+    </div>
 
     <!--Envoie les données du formulaire selon si c'est un ajout ou une modification-->
     <button type="submit" class="btn btn-primary">Envoyer</button>

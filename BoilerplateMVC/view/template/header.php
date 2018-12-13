@@ -22,7 +22,9 @@
 <div class="jumbotron jumbotron-fluid bg_front">
   <div class="container">
     <h1 class="display-4">Bienvenue sur le site de Sauvons la planete</h1>
-    <p class="lead">Ici vous aurait la liste des bénévoles avec un tri possible</p>
+    <p class="lead">Ici vous aurait la liste des bénévoles avec un tri possible</p>         
+    <a class="nav-link btn btn-danger w-25" href="logoutView">Deconnexion</a>
   </div>
 </div>
 <main>
+<?php var_dump($_SESSION); ?>

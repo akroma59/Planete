@@ -1,4 +1,4 @@
-<form class="container" method="post" action="index.php">
+<form class="container" method="post">
  <div class="form-row">
    <div class="form-group col-md-4">
      <label for="inputState">Triée par :</label>

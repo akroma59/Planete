@@ -1,11 +1,11 @@
 <?php 
 include "template/header.php";
-require "../view/form/formSortUser.php";
+require "view/form/formSortUser.php";
 ?>
 <div class="card-deck m-0 text-center text-white">
-  <div class="card  bg-success mb-3">
+  <div class="card bg-success mb-3">
     <div class="card-body">
-      <a href="addUser.php" class="card-link">
+      <a href="addUser" class="card-link">
         <h5 class="card-title">Ajout utilisateur</h5>
       </a>
     </div>
@@ -57,8 +57,8 @@ require "../view/form/formSortUser.php";
         <td>
           <?php echo htmlspecialchars($user["ville"]);?>
         </td>
-        <td><a href="deleteUser.php?id=<?php echo $user["id"];?>" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-        <td><a href="modifyUser.php?id=<?php echo $user["id"];?>" class="card-link"><i class="fa fa-address-card"
+        <td><a href="deleteUser?id=<?php echo $user["id"];?>" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+        <td><a href="updateUser?id=<?php echo $user["id"];?>" class="card-link"><i class="fa fa-address-card"
               aria-hidden="true"></i></a></td>
       </tr>
       <?php }?>

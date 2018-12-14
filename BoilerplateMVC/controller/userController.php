@@ -39,6 +39,16 @@ if (!empty($_POST)) {
       header("Location: Accueil.php");
       exit;
     }
+    $id = htmlspecialchars($_GET["id"]);
+    $delete=deleteUser($id);
+    
+    header("Location: Accueil.php");
+    }
+    
+    function login()
+    {
+       $reponses = getDataBase()->query('SELECT * FROM Users');
+       $reponse = $reponses->fetchall();
    }
    require "view/addUserView.php";
 }
@@ -53,7 +63,7 @@ header("Location: Accueil.php");
 function login()
 {
    $reponses = getDataBase()->query('SELECT * FROM Users');
-   $reponse = $reponses->fetchall();
+   $reponse = $reponses->fetchall(PDO::FETCH_ASSOC);
    //On vérifie si le formulaire a été rempli
    if(!empty($_POST))
    {
@@ -72,12 +82,17 @@ function login()
        }
        if(isLogged())
        {
-           redirectTo("Accueil");
+           redirectTo("Accueil.php");
        }
     }
    include "view/loginView.php";
   }
 
-
+function showMessage() {
+    require "model/messageManager.php";
+    $messages = getMessages($_SESSION["user"]["id"]);
+    require "view/messageView.php";
+    var_dump($messages);
+}
 
 ?>

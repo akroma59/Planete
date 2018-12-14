@@ -13,8 +13,8 @@ function getUser($id)
    $query = $db->prepare("SELECT * FROM Users WHERE id= ?");
    $query->execute([$id]);
    $result = $query->fetch(PDO::FETCH_ASSOC);
-   return $result;
    $query->CloseCursor();
+   return $result;
 }
 
 

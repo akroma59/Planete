@@ -1,25 +1,24 @@
 <?php
 
-function getMessages($userId) {
+function getMessages($id) {
   $db = getDataBase();
-  $query = $db->prepare("SELECT m.*, u.pseudo FROM message AS m INNER JOIN users AS u ON m.sender = u.id WHERE getter = ?");
-  $query->execute([$userId]);
-  $result = $query->fetchall(PDO::FETCH_ASSOC);
-  $query->closeCursor();
-  return $result;
+  $messages = $db->prepare("SELECT m.* FROM Message AS m 
+                            INNER JOIN Users AS u ON m.envoyeur_id = u.id ");
+  $messages->execute([$id]);
+  $message = $messages->fetchall(PDO::FETCH_ASSOC);
+  $messages->CloseCursor();
+  return $message;
 }
-
-function addMessage($message, $sender) {
+function addMessages($message, $id) {
   $db = getDataBase();
-  $query = $db->prepare("INSERT INTO message(content, date, sender, getter, object) VALUES (:content, NOW(), :sender, :getter, :object)");
-  $result = $query->execute([
-    "content" => $message["content"],
-    "sender" => $sender,
-    "getter" => $message["pseudo"],
-    "object" => $message["object"]
+  $messages = $db->prepare("INSERT INTO Message (destinataire_id, envoyeur_id, objet, contenu) VALUES(:destinataire_id, :envoyeur_id, :objet, :contenu)");
+  $message = $messages->execute([
+    "destinataire_id" => $message["destinataire_id"],
+    "envoyeur_id" => $id,
+    "objet" => $message["objet"],
+    "contenu" => $message["contenu"]
   ]);
-  $query->closeCursor();
-  return $result;
+  $messages->CloseCursor();
+  return $message;
 }
-
  ?>

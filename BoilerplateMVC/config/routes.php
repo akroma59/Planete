@@ -38,6 +38,11 @@ function getRoutes() {
       ["id" => ["integer"]],
       "status" => "admin"
     ],
+    "message" => [
+      "message",
+      "showMessage",
+      "status" => "admin"
+    ],
   ];
 }
  ?>

@@ -10,6 +10,12 @@ require "view/form/formSortUser.php";
       </a>
     </div>
   </div>
+  <div class="card bg-success mb-3">
+    <div class="card-body">
+    <a href="message" class="card-link">Message</a>
+    </div>
+  </div>
+
   <table class="table table-dark bg_tableau">
     <thead>
       <tr>
@@ -21,6 +27,8 @@ require "view/form/formSortUser.php";
         <th scope="col">commentaire</th>
         <th scope="col">rue</th>
         <th scope="col">ville</th>
+        <th scope="col">status</th>
+        <th scope="col">password</th>
         </th>
       </tr>
     </thead>
@@ -57,10 +65,15 @@ require "view/form/formSortUser.php";
         <td>
           <?php echo htmlspecialchars($user["ville"]);?>
         </td>
+        <td>
+          <?php echo htmlspecialchars($user["status"]);?>
+        </td>
+        <td>
+          <?php echo htmlspecialchars($user["password"]);?>
+        </td>
         <td><a href="deleteUser?id=<?php echo $user["id"];?>" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-        <td><a href="updateUser?id=<?php echo $user["id"];?>" class="card-link"><i class="fa fa-address-card"
-              aria-hidden="true"></i></a></td>
-      </tr>
+        <td><a href="updateUser?id=<?php echo $user["id"];?>" class="card-link"><i class="fa fa-address-card" aria-hidden="true"></i></a></td>
+       </tr>
       <?php }?>
     </tbody>
   </table>

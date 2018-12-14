@@ -20,7 +20,7 @@ function getUser($id)
 
 function addUser($user) {
     $db = getDataBase();
-    $query = $db->prepare("INSERT INTO Users (nom, prenom, age, disponible, commentaire, rue, ville, status, password) VALUES(:nom, :prenom, :age, :disponible, :commentaire, :rue, :ville, :status, :password)");
+    $query = $db->prepare("INSERT INTO Users (nom, prenom, age, disponible, commentaire, rue, ville, status, password, pseudo) VALUES(:nom, :prenom, :age, :disponible, :commentaire, :rue, :ville, :status, :password, :pseudo)");
     $result = $query->execute([
         "nom" => $user["user_name"],
         "prenom" => $user["user_firstname"],
@@ -38,7 +38,7 @@ function addUser($user) {
 
 function updateUser($user){
     $db = getDataBase();
-    $query = $db->prepare("UPDATE Users SET nom = :nom, prenom = :prenom, age = :age, disponible = :disponible, commentaire = :commentaire, rue = :rue, ville = :ville status = :status password = :password WHERE id=:id");
+    $query = $db->prepare("UPDATE Users SET nom = :nom, prenom = :prenom, age = :age, disponible = :disponible, commentaire = :commentaire, rue = :rue, ville = :ville status = :status password = :password, pseudo = :pseudo, WHERE id=:id");
     $result = $query->execute([
         "nom" => $user["user_name"],
         "prenom" => $user["user_firstname"],
@@ -129,5 +129,4 @@ function verifyUser() {
     $reponses = $db->query('SELECT * FROM Users');
     $reponse = $reponses->fetchall();
 }
-
 ?>

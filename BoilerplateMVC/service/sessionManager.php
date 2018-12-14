@@ -21,7 +21,7 @@ function logout() {
 
 //Fonction pour vérifier qu'un utilisateur est connecté
 function isLogged() {
-  if(isset($_SESSION["user"]) && !empty($_SESSION["user"])) {
+  if(isset($_SESSION["user"]["status"]) && !empty($_SESSION["user"])) {
     return true;
   }
   return false;

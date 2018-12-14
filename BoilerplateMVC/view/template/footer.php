@@ -1,8 +1,8 @@
 </main>  
-<footer class="jumbotron jumbotron-fluid m-0 bg_front">
+<footer class="jumbotron jumbotron-fluid m-0 bg_front policy">
   <div class="container">
-    <h1 class="display-4">Bienvenue sur le site de Sauvons la planete</h1>
-    <p class="lead">Ici vous aurait la liste des bénévoles avec un tri possible</p>
+    <h1 class="display-4">Copyright : Vincent Richardeau</h1>
+    <p class="lead">Projet de formation front & back end </p>
   </div>
 </footer>  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

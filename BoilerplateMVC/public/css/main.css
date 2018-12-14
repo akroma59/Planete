@@ -141,14 +141,16 @@ textarea {
 
 
 .bg_front{
-    background-color: #037171;
+    background-color: #568EA3;
 }
 
 .bg_tableau{ 
-    background-color : #14453D
+    background-color : #14453D;
 }
 
-
+.policy {
+    font-family: 'Pattaya', sans-serif;
+}
 
 
 

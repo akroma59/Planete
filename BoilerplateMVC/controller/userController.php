@@ -62,6 +62,7 @@ header("Location: Accueil.php");
 
 function login()
 {
+   session_start();
    $reponses = getDataBase()->query('SELECT * FROM Users');
    $reponse = $reponses->fetchall(PDO::FETCH_ASSOC);
    //On vérifie si le formulaire a été rempli
@@ -82,7 +83,12 @@ function login()
        }
        if(isLogged())
        {
-           redirectTo("Accueil.php");
+         if ($_SESSION["user"]["status"] === "admin") {
+            redirectTo("Accueil");
+        }
+         else {
+            redirectTo("message");
+         }
        }
     }
    include "view/loginView.php";
@@ -93,6 +99,17 @@ function showMessage() {
     $messages = getMessages($_SESSION["user"]["id"]);
     require "view/messageView.php";
     var_dump($messages);
+}
+
+function disconnect() {
+    session_start();
+    if (isLogged()) {
+        logout();
+        redirectTo("");
+    }
+    else {
+        redirectTo("");
+    }
 }
 
 ?>

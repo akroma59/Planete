@@ -1,7 +1,7 @@
 <form class="mx-auto w-50 my-5" method="POST">
     <div class="form-group">
-        <label for="destinataire_id">Destinataire : </label>
-        <input type="text" class="form-control" name="destinataire_id" id="destinataire_id" placeholder="destinataire" required="required">
+       <label for="exampleInputEmail1">Envoyer un message à :</label>
+       <input type="text" class="form-control" id="exampleInputEmail1" name="pseudo" placeholder="Destinateur">
     </div>
     <input type="hidden" name="envoyeur_id" value="<?php echo($_SESSION["user"]["id"])?>" >
     <div class="form-group">

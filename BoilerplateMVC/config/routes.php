@@ -40,12 +40,13 @@ function getRoutes() {
     ],
     "message" => [
       "message",
-      "showMessage"
-
+      "showMessage",
+      "status" => "user"
     ],
     "logout" => [
       "user",
-      "disconnect"
+      "disconnect",
+      "status" => "user"
     ],
   ];
 }

@@ -10,7 +10,6 @@ function showUsers() {
         $users = getUsers();
         }
     include "view/indexView.php";
-    
 }
 
 function showUpdateUser() {
@@ -44,12 +43,7 @@ if (!empty($_POST)) {
     
     header("Location: Accueil.php");
     }
-    
-    function login()
-    {
-       $reponses = getDataBase()->query('SELECT * FROM Users');
-       $reponse = $reponses->fetchall();
-   }
+
    require "view/addUserView.php";
 }
 
@@ -62,7 +56,6 @@ header("Location: Accueil.php");
 
 function login()
 {
-   session_start();
    $reponses = getDataBase()->query('SELECT * FROM Users');
    $reponse = $reponses->fetchall(PDO::FETCH_ASSOC);
    //On vérifie si le formulaire a été rempli

@@ -26,5 +26,4 @@
   </div>
 </div>
 <main>
-<?php var_dump ($_SESSION)
-?>
+ 

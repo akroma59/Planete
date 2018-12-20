@@ -8,8 +8,8 @@
      <th scope="col">Objet</th>
      <th scope="col">Contenu</th>
      <th scope="col">Date/heure</th>
-     <th scope="col">Destinataire</th>
      <th scope="col">Envoyeur</th>
+     <th scope="col">Destinataire</th>
    </tr>
  </thead>
  <tbody>
@@ -19,8 +19,8 @@
      <td><?php echo $message["objet"] ?> </td>
      <td><?php echo $message["contenu"] ?> </td>
      <td><?php echo $message["date"] ?> </td>
-     <td><?php echo $message["destinataire_id"] ?> </td>
-     <td><?php echo $message["envoyeur_id"] ?> </td>
+     <td><?php echo $_SESSION["user"]["nom"] ?> </td>
+     <td><?php echo $message["pseudo"] ?> </td>
    </tr>
 
    <?php } ?>
@@ -28,4 +28,6 @@
 </table>
 
 
-<?php include "template/footer.php"; ?>
+<?php  
+
+include "template/footer.php"; ?>

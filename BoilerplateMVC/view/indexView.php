@@ -4,15 +4,15 @@ require "view/form/formSortUser.php";
 ?>
 <div class="card-deck m-0 text-center text-white">
   <div class="card bg-success mb-3">
-    <div class="card-body">
+    <div class="card-body ">
       <a href="addUser" class="card-link">
-        <h5 class="card-title">Ajout utilisateur</h5>
+        <h5 class="card-title text-white">Ajout utilisateur</h5>
       </a>
     </div>
   </div>
   <div class="card bg-success mb-3">
-    <div class="card-body">
-    <a href="message" class="card-link">Message</a>
+    <div class="card-body ">
+    <a href="message" class="card-link"><h5 class="card-title text-white">Message</h5></a>
     </div>
   </div>
 

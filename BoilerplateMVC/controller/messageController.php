@@ -1,22 +1,21 @@
 <?php
-require "model/userManager.php";
-require "model/messageManager.php";
+function showMessage(){
+ require "model/messageManager.php";
 
-$id=$_SESSION["user"]["id"];
+ $messages =  getMessages($_SESSION["user"]["id"]);
 
-function showMessage() {
-    $messages = getMessages($_SESSION["user"]["id"]);
-    require "view/messageView.php";
-    // var_dump($messages);
+if (!empty($_POST)) {
+ $destinataire = getPseudo($_POST["pseudo"]);
+ $_POST["pseudo"] = $destinataire["id"];
+
+
+ $sendMessage = addMessages($_POST,$_SESSION["user"]["id"]);
+ if ($sendMessage) {
+   echo "Message envoyé !";
+ }
+
 }
-
-function showAddMessage() {
-    if (!empty($_POST) && (isset($id) && (!empty($id)))) {
-        $addMessage = addMessages($_POST, $id);
-    }
+   require "view/messageView.php";
+   exit;
 }
-
-$test = addMessages($_POST, $id);
-var_dump ($test);
 ?>
-

@@ -51,7 +51,8 @@ function updateUser($user){
         "password" => $user["user_password"],
         "id" => $user["id"]        
         ]);    
-    return $result;    
+    return $result;
+    var_dump($result);    
 }
 
 function deleteUser($id){
